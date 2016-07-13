@@ -1,3 +1,6 @@
+var bigInt = require("big-integer");
+var writtenNumber = require('written-number');
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -274,4 +277,20 @@ function problem15() {
 	return latticePaths(20)
 }
 
-console.log(problem15())
+//16) Power digit sum
+
+function powerDigitSum(num) {
+	var power = bigInt(2).pow(num);
+	var sNum = power.toString();
+	var max = 0;
+	for (i = 0; i < sNum.length; i++) {
+		max += parseInt(sNum.charAt(i));
+	}
+	return max;
+}
+
+function problem16() {
+	return powerDigitSum(1000);
+}
+
+console.log(problem16())
