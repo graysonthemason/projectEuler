@@ -343,4 +343,85 @@ function problem18() {
 	return maxPathSumI(array);
 }
 
-console.log(problem18())
+// 19) Counting Sundays
+
+function countingSundays() {
+	var count = 0;
+	var start = 0;
+	for (i = 0; i < 100; i++) {
+		// jan
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// feb
+		if ((i % 4 == 0 && !(i % 100 == 0)) || i % 400 == 0) {
+			start += 29;
+			if (start % 7 == 6) {
+				count += 1
+			}
+		} else {
+			start += 28;
+			if (start % 7 == 6) {
+				count += 1
+			}
+		}
+		// march
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// april
+		start += 30
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// may
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// june
+		start += 30
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// july
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// august
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// sep
+		start += 30
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// oct
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// nov
+		start += 30
+		if (start % 7 == 6) {
+			count += 1
+		}
+		// dec
+		start += 31
+		if (start % 7 == 6) {
+			count += 1
+		}
+	}
+	return count;
+}
+
+function problem19() {
+	return countingSundays();
+}
+
+console.log(problem19())
