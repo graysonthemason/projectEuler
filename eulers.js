@@ -424,4 +424,23 @@ function problem19() {
 	return countingSundays();
 }
 
-console.log(problem19())
+// 20) Factorial digit sum
+
+function factorialDigitSum(num) {
+	var total = 1;
+	var sum = 0;
+	for (i = 1; i <= num; i++) {
+		total = bigInt(total).multiply(i);
+	}
+	total = total.toString();
+	for (t = 0; t < total.length; t++) {
+		sum += parseInt(total.charAt(t))
+	}
+	return sum;
+}
+
+function problem20() {
+	return factorialDigitSum(100)
+}
+
+console.log(problem20())
