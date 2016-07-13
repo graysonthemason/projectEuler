@@ -251,4 +251,27 @@ function problem13() {
 	return largeSum(sNum);
 }
 
-console.log(problem13())
+// 15) Lattice paths
+
+function latticePaths(gridSize) {
+	var grid = [];
+	for (i = 0; i <= gridSize; i++) {
+		grid[i] = [];
+	}
+	for (i = 0; i <= gridSize; i++) {
+		for (x = 0; x <= gridSize; x++) {
+			if (x == 0 || i == 0) {
+				grid[i][x] = 1
+			} else {
+				grid[i][x] = grid[i][x - 1] + grid[i - 1][x]
+			}
+		}
+	}
+	return grid[gridSize][gridSize];
+}
+
+function problem15() {
+	return latticePaths(20)
+}
+
+console.log(problem15())
