@@ -46,6 +46,32 @@ function problem2() {
 	return sumOfEvens(getFibonacciSequenceToValue(4000000));
 }
 
+// 3) Largest prime factor
+
+function largestPrimeFactor(num) {
+	var largestPrimeFactor = 1;
+	for (var i = 2; i <= Math.sqrt(num); i++) {
+		if (num % i == 0 && isPrime(i)) {
+			largestPrimeFactor = i
+		}
+	}
+	return largestPrimeFactor;
+}
+
+function isPrime(num) {
+	prime = true;
+	for (var i = 2; i <= Math.sqrt(num); i++) {
+		if (num % i == 0) {
+			prime = false;
+		}
+	}
+	return prime;
+}
+
+function problem3() {
+	return largestPrimeFactor(600851475143);
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -610,4 +636,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem2())
+console.log(problem3())
