@@ -72,6 +72,35 @@ function problem3() {
 	return largestPrimeFactor(600851475143);
 }
 
+// 4) Largest palindrome product
+
+function largestPalendromeProduct(numOfDigits) {
+	var palendromes = [];
+	for (var i = Math.pow(10, numOfDigits) - 1; i >= Math.pow(10, numOfDigits - 1); i--) {
+		for (var x = Math.pow(10, numOfDigits) - 1; x >= Math.pow(10, numOfDigits - 1); x--) {
+			if (isPalendrome(i * x)) {
+				palendromes.push(i * x);
+			}
+		}
+	}
+	return Math.max.apply(null, palendromes);
+}
+
+function isPalendrome(num) {
+	var numString = num.toString();
+	var palendrome = true;
+	for (var i = 0; i < (numString.length / 2); i++) {
+		if (numString[i] != numString[numString.length - i - 1]) {
+			palendrome = false;
+		}
+	}
+	return palendrome;
+}
+
+function problem4() {
+	return largestPalendromeProduct(3);
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -636,4 +665,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem3())
+console.log(problem4())
