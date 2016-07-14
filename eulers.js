@@ -17,6 +17,35 @@ function problem1() {
 	return multiplesOfTwoNums(3, 5, 1000)
 }
 
+// 2) Even Fibonacci numbers
+
+function getFibonacciSequenceToValue(num) {
+	sequence = [1, 2]
+	for (var i = 2; i <= num; i++) {
+		length = sequence.length;
+		sum = sequence[length - 1] + sequence[length - 2]
+		if (sum >= num) {
+			return sequence
+		}
+		sequence.push(sum);
+	}
+}
+
+function sumOfEvens(array) {
+	var sum = 0;
+	for (var i = 0; i <= array.length; i++) {
+		if (array[i] % 2 == 0) {
+			sum += array[i];
+		}
+	}
+	return sum;
+}
+
+
+function problem2() {
+	return sumOfEvens(getFibonacciSequenceToValue(4000000));
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -581,4 +610,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem1())
+console.log(problem2())
