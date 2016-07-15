@@ -1,3 +1,5 @@
+var eulers = {};
+var currentProblem = 20;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -13,7 +15,7 @@ function multiplesOfTwoNums(multiple1, multiple2, num) {
 	return total;
 }
 
-function problem1() {
+eulers.problem1 = function() {
 	return multiplesOfTwoNums(3, 5, 1000)
 }
 
@@ -42,7 +44,7 @@ function sumOfEvens(array) {
 }
 
 
-function problem2() {
+eulers.problem2 = function() {
 	return sumOfEvens(getFibonacciSequenceToValue(4000000));
 }
 
@@ -68,7 +70,7 @@ function isPrime(num) {
 	return prime;
 }
 
-function problem3() {
+eulers.problem3 = function() {
 	return largestPrimeFactor(600851475143);
 }
 
@@ -97,7 +99,7 @@ function isPalendrome(num) {
 	return palendrome;
 }
 
-function problem4() {
+eulers.problem4 = function() {
 	return largestPalendromeProduct(3);
 }
 
@@ -118,7 +120,7 @@ function smallestMultiple(num) {
 	}
 }
 
-function problem5() {
+eulers.problem5 = function() {
 	return smallestMultiple(20);
 }
 
@@ -140,7 +142,7 @@ function squareOfSums(num) {
 	return Math.pow(total, 2);
 }
 
-function problem6() {
+eulers.problem6 = function() {
 	var num = 100;
 	return squareOfSums(num) - sumOfSquares(num);
 }
@@ -153,14 +155,13 @@ function getNthPrimeNumber(num) {
 	for (var i = 1; count <= num; i++) {
 		if (isPrime(i)) {
 			prime = i;
-			console.log(prime);
 			count++;
 		}
 	}
 	return prime;
 }
 
-function problem7() {
+eulers.problem7 = function() {
 	return getNthPrimeNumber(10001);
 }
 
@@ -184,7 +185,7 @@ function largestProductInSeries(l) {
 	return max;
 }
 
-function problem8() {
+eulers.problem8 = function() {
 	var num = "7316717653133062491922511967442657474235534919493496983520312774506326239578318016984801869478851843858615607891129494954595017379583319528532088055111254069874715852386305071569329096329522744304355766896648950445244523161731856403098711121722383113622298934233803081353362766142828064444866452387493035890729629049156044077239071381051585930796086670172427121883998797908792274921901699720888093776657273330010533678812202354218097512545405947522435258490771167055601360483958644670632441572215539753697817977846174064955149290862569321978468622482839722413756570560574902614079729686524145351004748216637048440319989000889524345065854122758866688116427171479924442928230863465674813919123162824586178664583591245665294765456828489128831426076900422421902267105562632111110937054421750694165896040807198403850962455444362981230987879927244284909188845801561660979191338754992005240636899125607176060588611646710940507754100225698315520005593572972571636269561882670428252483600823257530420752963450";
 	return largestProductInSeries(num);
 }
@@ -204,7 +205,7 @@ function findPythagoreanTripletSum(num) {
 	}
 }
 
-function problem9() {
+eulers.problem9 = function() {
 	return findPythagoreanTripletSum(1000)
 }
 
@@ -220,7 +221,7 @@ function sumOfPrimesBelowN(num) {
 	return total;
 }
 
-function problem10() {
+eulers.problem10 = function() {
 	return sumOfPrimesBelowN(2000000);
 }
 
@@ -303,7 +304,7 @@ function combineDirections(grid, consecutiveNums, gridX) {
 	return max;
 }
 
-function problem11() {
+eulers.problem11 = function() {
 	var grid = [08, 02, 22, 97, 38, 15, 00, 40, 00, 75, 04, 05, 07, 78, 52, 12, 50, 77, 91, 08, 49, 49, 99, 40, 17, 81, 18, 57, 60, 87, 17, 40, 98, 43, 69, 48, 04, 56, 62, 00, 81, 49, 31, 73, 55, 79, 14, 29, 93, 71, 40, 67, 53, 88, 30, 03, 49, 13, 36, 65, 52, 70, 95, 23, 04, 60, 11, 42, 69, 24, 68, 56, 01, 32, 56, 71, 37, 02, 36, 91, 22, 31, 16, 71, 51, 67, 63, 89, 41, 92, 36, 54, 22, 40, 40, 28, 66, 33, 13, 80, 24, 47, 32, 60, 99, 03, 45, 02, 44, 75, 33, 53, 78, 36, 84, 20, 35, 17, 12, 50, 32, 98, 81, 28, 64, 23, 67, 10, 26, 38, 40, 67, 59, 54, 70, 66, 18, 38, 64, 70, 67, 26, 20, 68, 02, 62, 12, 20, 95, 63, 94, 39, 63, 08, 40, 91, 66, 49, 94, 21, 24, 55, 58, 05, 66, 73, 99, 26, 97, 17, 78, 78, 96, 83, 14, 88, 34, 89, 63, 72, 21, 36, 23, 09, 75, 00, 76, 44, 20, 45, 35, 14, 00, 61, 33, 97, 34, 31, 33, 95, 78, 17, 53, 28, 22, 75, 31, 67, 15, 94, 03, 80, 04, 62, 16, 14, 09, 53, 56, 92, 16, 39, 05, 42, 96, 35, 31, 47, 55, 58, 88, 24, 00, 17, 54, 24, 36, 29, 85, 57, 86, 56, 00, 48, 35, 71, 89, 07, 05, 44, 44, 37, 44, 60, 21, 58, 51, 54, 17, 58, 19, 80, 81, 68, 05, 94, 47, 69, 28, 73, 92, 13, 86, 52, 17, 77, 04, 89, 55, 40, 04, 52, 08, 83, 97, 35, 99, 16, 07, 97, 57, 32, 16, 26, 26, 79, 33, 27, 98, 66, 88, 36, 68, 87, 57, 62, 20, 72, 03, 46, 33, 67, 46, 55, 12, 32, 63, 93, 53, 69, 04, 42, 16, 73, 38, 25, 39, 11, 24, 94, 72, 18, 08, 46, 29, 32, 40, 62, 76, 36, 20, 69, 36, 41, 72, 30, 23, 88, 34, 62, 99, 69, 82, 67, 59, 85, 74, 04, 36, 16, 20, 73, 35, 29, 78, 31, 90, 01, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 05, 54, 01, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 01, 89, 19, 67, 48];
 	return combineDirections(grid, 4, 20)
 }
@@ -320,7 +321,7 @@ function isHighlyDivisible(num) {
 	return count;
 }
 
-function problem12() {
+eulers.problem12 = function() {
 	var count = 0;
 	for (var i = 1; true; i++) {
 		count += i;
@@ -347,7 +348,7 @@ function largeSum(sNum) {
 	return sumString.substring(0, 1) + sumString.substring(2, 11);
 }
 
-function problem13() {
+eulers.problem13 = function() {
 	var sNum = [37107287533902102798797998220837590246510135740250,
 		46376937677490009712648124896970078050417018260538,
 		74324986199524741059474233309513058123726617309629,
@@ -452,6 +453,39 @@ function problem13() {
 	return largeSum(sNum);
 }
 
+// 14) Longest Collatz sequence
+
+function collatzSequenceCount(num) {
+	var count = 0
+	var currentNum = num;
+	while (currentNum != 1) {
+		if (currentNum % 2 == 0) {
+			currentNum = currentNum / 2;
+		} else {
+			currentNum = currentNum * 3 + 1;
+		}
+		count += 1
+	}
+	return count;
+}
+
+function longestCollatzSequence(num) {
+	var longestSequenceCount = 0;
+	var startingNum;
+	for (var i = 1; i < num; i++) {
+		var currentCount = collatzSequenceCount(i);
+		if (collatzSequenceCount(i) > longestSequenceCount) {
+			startingNum = i;
+			longestSequenceCount = currentCount;
+		}
+	}
+	return startingNum;
+}
+
+eulers.problem14 = function() {
+	return longestCollatzSequence(1000000);
+}
+
 // 15) Lattice paths
 
 function latticePaths(gridSize) {
@@ -471,7 +505,7 @@ function latticePaths(gridSize) {
 	return grid[gridSize][gridSize];
 }
 
-function problem15() {
+eulers.problem15 = function() {
 	return latticePaths(20)
 }
 
@@ -487,7 +521,7 @@ function powerDigitSum(num) {
 	return max;
 }
 
-function problem16() {
+eulers.problem16 = function() {
 	return powerDigitSum(1000);
 }
 
@@ -502,7 +536,7 @@ function numberLetterCounts(num) {
 	return total;
 }
 
-function problem17() {
+eulers.problem17 = function() {
 	return numberLetterCounts(1000);
 }
 
@@ -520,7 +554,7 @@ function maxPathSumI(array) {
 	return arrayDup[0][0];
 }
 
-function problem18() {
+eulers.problem18 = function() {
 	var array = [
 		[75],
 		[95, 64],
@@ -618,7 +652,7 @@ function countingSundays() {
 	return count;
 }
 
-function problem19() {
+eulers.problem19 = function() {
 	return countingSundays();
 }
 
@@ -637,11 +671,9 @@ function factorialDigitSum(num) {
 	return sum;
 }
 
-function problem20() {
+eulers.problem20 = function() {
 	return factorialDigitSum(100)
 }
-
-
 
 // 67) Maximum path sum II
 
@@ -657,7 +689,7 @@ function maxPathSumII(array) {
 	return arrayDup[0][0];
 }
 
-function problem67() {
+eulers.problem67 = function() {
 	var array = [
 		[59],
 		[73, 41],
@@ -763,4 +795,11 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem10())
+// Dynamically run current problem and provide execution time
+
+var problemString = "problem" + currentProblem;
+var start = new Date().getTime();
+console.log(problemString + " : " + eulers[problemString]());
+var end = new Date().getTime();
+var time = end - start;
+console.log("Took " + time + " ms to execute.");
