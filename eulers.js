@@ -208,6 +208,22 @@ function problem9() {
 	return findPythagoreanTripletSum(1000)
 }
 
+// 10) Summation of primes
+
+function sumOfPrimesBelowN(num) {
+	var total = 0;
+	for (var i = 2; i <= num; i++) {
+		if (isPrime(i)) {
+			total += i;
+		}
+	}
+	return total;
+}
+
+function problem10() {
+	return sumOfPrimesBelowN(2000000);
+}
+
 // 11) Largest product in a grid
 
 function adjacent(grid, consecutiveNums, gridX) {
@@ -747,4 +763,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem9())
+console.log(problem10())
