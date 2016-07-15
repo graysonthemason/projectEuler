@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 20;
+var currentProblem = 21;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -673,6 +673,42 @@ function factorialDigitSum(num) {
 
 eulers.problem20 = function() {
 	return factorialDigitSum(100)
+}
+
+// 21) Amicable numbers
+
+function sumOfAmicable(num) {
+	var total = 0;
+	for (var i = num; i > 0; i--) {
+		if (isAmicablePair(i)) {
+			total += i;
+		}
+	}
+	return total;
+}
+
+function isAmicablePair(num) {
+	var firstNum = sumOfDividers(num)
+	var secondNum = sumOfDividers(firstNum);
+	if (num == secondNum && firstNum != secondNum) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function sumOfDividers(num) {
+	var total = 0;
+	for (var i = 1; i <= num / 2; i++) {
+		if (num % i == 0) {
+			total += i;
+		}
+	}
+	return total;
+}
+
+eulers.problem21 = function() {
+	return sumOfAmicable(10000);
 }
 
 // 67) Maximum path sum II
