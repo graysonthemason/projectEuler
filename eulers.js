@@ -122,6 +122,29 @@ function problem5() {
 	return smallestMultiple(20);
 }
 
+// 6) Sum square difference
+
+function sumOfSquares(num) {
+	var total = 0;
+	for (var i = 1; i <= num; i++) {
+		total += Math.pow(i, 2);
+	}
+	return total;
+}
+
+function squareOfSums(num) {
+	var total = 0;
+	for (var i = 1; i <= num; i++) {
+		total += i;
+	}
+	return Math.pow(total, 2);
+}
+
+function problem6() {
+	var num = 100;
+	return squareOfSums(num) - sumOfSquares(num);
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -686,4 +709,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem5())
+console.log(problem6())
