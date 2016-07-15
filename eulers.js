@@ -145,6 +145,25 @@ function problem6() {
 	return squareOfSums(num) - sumOfSquares(num);
 }
 
+// 7) 10001st prime
+
+function getNthPrimeNumber(num) {
+	var count = 0;
+	var prime;
+	for (var i = 1; count <= num; i++) {
+		if (isPrime(i)) {
+			prime = i;
+			console.log(prime);
+			count++;
+		}
+	}
+	return prime;
+}
+
+function problem7() {
+	return getNthPrimeNumber(10001);
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -709,4 +728,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem6())
+console.log(problem7())
