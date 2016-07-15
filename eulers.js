@@ -189,6 +189,25 @@ function problem8() {
 	return largestProductInSeries(num);
 }
 
+// 9) Special Pythagorean triplet
+
+function findPythagoreanTripletSum(num) {
+	for (var c = num; c > 0; c--) {
+		for (var b = c - 1; b > 0; b--) {
+			if (!(b > c || a > b)) {
+				var a = num - c - b;
+				if (a == Math.sqrt(Math.pow(c, 2) - Math.pow(b, 2))) {
+					return a * b * c;
+				}
+			}
+		}
+	}
+}
+
+function problem9() {
+	return findPythagoreanTripletSum(1000)
+}
+
 // 11) Largest product in a grid
 
 function adjacent(grid, consecutiveNums, gridX) {
@@ -728,4 +747,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem7())
+console.log(problem9())
