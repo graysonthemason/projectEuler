@@ -101,6 +101,27 @@ function problem4() {
 	return largestPalendromeProduct(3);
 }
 
+// 5) Smallest multiple
+
+function smallestMultiple(num) {
+	var current;
+	for (var i = 1; true; i++) {
+		current = i * num;
+		for (var x = num; x > 0; x--) {
+			if (current % x != 0) {
+				break;
+			}
+			if (x == 1) {
+				return current;
+			}
+		}
+	}
+}
+
+function problem5() {
+	return smallestMultiple(20);
+}
+
 // 8) Largest product in a series
 
 function largestProductInSeries(l) {
@@ -665,4 +686,4 @@ function problem67() {
 	return maxPathSumII(array);
 }
 
-console.log(problem4())
+console.log(problem5())
