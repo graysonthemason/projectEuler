@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 21;
+var currentProblem = 22;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -709,6 +709,29 @@ function sumOfDividers(num) {
 
 eulers.problem21 = function() {
 	return sumOfAmicable(10000);
+}
+
+// 22) Names scores
+
+function sortCSVAlphabetically(fileName) {
+	var total = 0;
+	var fs = require('fs');
+	fs.readFile(fileName, 'utf8', function(err, data) {
+		array = data.split('","').sort();
+		count = array.length;
+		for (var i = 0; i < array.length; i++) {
+			var wordTotal = 0
+			for (var x = 0; x < array[i].length; x++) {
+				wordTotal += array[i].toUpperCase().charCodeAt(x) - 64;
+			}
+			total += (wordTotal * (i + 1));
+		}
+		console.log(total);
+	});
+}
+
+eulers.problem22 = function() {
+	return sortCSVAlphabetically('./data/names.txt');
 }
 
 // 67) Maximum path sum II
