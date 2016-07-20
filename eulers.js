@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 24;
+var currentProblem = 25;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -862,6 +862,33 @@ function getPermutation(array, permutation) {
 
 eulers.problem24 = function() {
 	return getPermutation(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], 1000000)
+}
+
+// 25) 1000-digit Fibonacci number
+
+function fibonacciIndex(exponent) {
+	var currentExp = 20;
+	var last = 1;
+	var secondLast = 1;
+	var current;
+	for (var i = 3; true; i++) {
+		var current = last + secondLast;
+		secondLast = last;
+		last = current;
+		if (current > 100000000000000000000) {
+			current = current / 10.0;
+			secondLast = secondLast / 10.0;
+			last = last / 10.0;
+			currentExp += 1;
+			if (currentExp == exponent) {
+				return i;
+			}
+		}
+	}
+}
+
+eulers.problem25 = function() {
+	return fibonacciIndex(1000);
 }
 
 // 67) Maximum path sum II
