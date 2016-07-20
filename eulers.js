@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 23;
+var currentProblem = 24;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -830,6 +830,38 @@ function contains(needle) {
 
 eulers.problem23 = function() {
 	return sumOfNonAbundantIntegers();
+}
+
+// 24) Lexicographic permutations
+
+function lexicographicSet(array) {
+	var set = [];
+	var current = 1;
+	for (i = 1; i <= array.length; i++) {
+		current = current * i;
+		set.push(current);
+	}
+	return set;
+}
+
+function getPermutation(array, permutation) {
+	var finalString = "";
+	var set = lexicographicSet(array);
+	permutation -= 1;
+	for (var i = set.length - 2; i >= 0; i--) {
+		var divider = Math.floor(permutation / set[i]);
+		finalString += array[divider];
+		permutation -= (divider * set[i]);
+		// remove used object
+		var index = array.indexOf(array[divider]);
+		array.splice(index, 1);
+	}
+	// add last remaining object
+	return finalString + array[0];
+}
+
+eulers.problem24 = function() {
+	return getPermutation(["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"], 1000000)
 }
 
 // 67) Maximum path sum II
