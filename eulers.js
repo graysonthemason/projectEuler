@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 22;
+var currentProblem = 23;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -732,6 +732,104 @@ function sortCSVAlphabetically(fileName) {
 
 eulers.problem22 = function() {
 	return sortCSVAlphabetically('./data/names.txt');
+}
+
+// 23) Non-abundant sums
+
+function isAbundantNumber(n) {
+	if (sumOfDividers(n) > n) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+function setOfAbundantNumbers() {
+	array = [];
+	for (var i = 12; i <= 28123 - 12; i++) {
+		if (isAbundantNumber(i)) {
+			array.push(i)
+		}
+	}
+	return array;
+}
+
+function isSumOfTwoNonAbundant(n) {
+	var answer = true;
+	for (var i = 12; i <= n - 12; i++) {
+		if (isAbundantNumber(i) && isAbundantNumber(n - i)) {
+			answer = false;
+		}
+	}
+	return answer;
+}
+
+function sumOfNonAbundantIntegers() {
+	var sum = 0;
+	var set = setOfAbundantNumbers();
+	for (var i = 1; i <= 28123; i++) {
+		var isNonAbundant = true;
+		for (var x = 0; x <= set.length; x++) {
+			var currentAbundant = set[x]
+			if (currentAbundant > (i - 12)) {
+				break;
+			} else {
+				if (contains.call(set, (i - currentAbundant))) {
+					isNonAbundant = false;
+					break;
+				}
+			}
+		}
+		if (isNonAbundant) {
+			sum += i;
+			console.log(i);
+		}
+	}
+	return sum;
+}
+
+// less efficient brute force
+
+// function sumOfNonAbundantIntegers() {
+// 	var sum = 0;
+// 	for (var i = 24; i <= 4000; i++) {
+// 		if (isSumOfTwoNonAbundant(i)) {
+// 			sum += i;
+// 		}
+// 	}
+// 	return sum;
+// }
+
+function contains(needle) {
+	// Per spec, the way to identify NaN is that it is not equal to itself
+	var findNaN = needle !== needle;
+	var indexOf;
+
+	if (!findNaN && typeof Array.prototype.indexOf === 'function') {
+		indexOf = Array.prototype.indexOf;
+	} else {
+		indexOf = function(needle) {
+			var i = -1,
+				index = -1;
+
+			for (i = 0; i < this.length; i++) {
+				var item = this[i];
+
+				if ((findNaN && item !== item) || item === needle) {
+					index = i;
+					break;
+				}
+			}
+
+			return index;
+		};
+	}
+
+	return indexOf.call(this, needle) > -1;
+};
+
+eulers.problem23 = function() {
+	return sumOfNonAbundantIntegers();
 }
 
 // 67) Maximum path sum II
