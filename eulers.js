@@ -1,5 +1,5 @@
 var eulers = {};
-var currentProblem = 25;
+var currentProblem = 26;
 var bigInt = require("big-integer");
 var writtenNumber = require('written-number');
 
@@ -889,6 +889,43 @@ function fibonacciIndex(exponent) {
 
 eulers.problem25 = function() {
 	return fibonacciIndex(1000);
+}
+
+// 26) Reciprocal cycles
+
+function reciprocalCycleLength(n) {
+	var cycles = 0;
+	var x = 1 % n;
+	var array = [1 % n, 0];
+	for (var i = 1; i < n; i++) {
+		x *= 10;
+		x = x % n;
+		cycles += 1;
+		if (contains.call(array, x)) {
+			break;
+		} else {
+			array.push(x);
+		}
+	}
+	return cycles;
+}
+
+function LongestReciprocalCycleLength(num) {
+	var longest = 1;
+	var d;
+	var len;
+	for (var i = 1; i <= num; i++) {
+		len = reciprocalCycleLength(i);
+		if (len > longest) {
+			longest = len;
+			d = i;
+		}
+	}
+	return d;
+}
+
+eulers.problem26 = function() {
+	return LongestReciprocalCycleLength(1000);
 }
 
 // 67) Maximum path sum II
